@@ -126,8 +126,10 @@ git push -u origin main
 _20. Отредактировать содержание файла “new.xml” - написать информацию о себе
 (ФИО, возраст, количество домашних животных, будущая желаемая зарплата).
 Всё написать в формате XML._
-```xml
+```
 vim new.xml
+```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <person>
 	<Name>Artem</Name>
@@ -135,6 +137,8 @@ vim new.xml
 	<Pets>1</Pets>
 	<Salary>1000</Salary>
 </person>
+```
+```
 Esc
 :wq
 ```
@@ -151,8 +155,10 @@ touch preferences.xml
 _23. В файл preferences.xml добавить информацию о своих предпочтениях
 (Любимый фильм, любимый сериал, любимая еда, любимое время года, сторона которую хотели бы посетить)
 в формате XML._
-```xml
+```
 vim preferences.xml
+```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <preferences>
  	<Movie>Inception</Movie>
@@ -161,13 +167,17 @@ vim preferences.xml
 	<Season>Summer</Season>
 	<Country>Canada</Country>	
 </preferences>
+```
+```
 Esc
 :wq
 ```
 _24. Cоздать файл sklls.xml добавить информацию о скиллах которые будут изучены на курсе в формате XML_
-```xml
+```
 touch sklls.xml
 vim sklls.xml
+```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <skills>
 	<Skill1>Terminal</Skill1>
@@ -177,6 +187,10 @@ vim sklls.xml
 	<Skill5>SQL</Skill5>
 	<Skill5>Dev Tools</Skill5>
 </skills>
+```
+```
+Esc
+:wq
 ```
 _25. Сделать коммит в одну строку._
 ```
@@ -223,10 +237,14 @@ _36. Отредактировать содержание файла “new.txt�
 Всё написать в формате TXT._
 ```
 vim new.txt
+```
+```
 Name Artem
 Age 24
 Pets 1
 Salary 1000
+```
+```
 Esc
 :wq
 ```
@@ -245,11 +263,15 @@ _39. В файл preferences.txt” добавить информацию о с�
 в формате TXT._
 ```
 vim preferences.txt
+```
+```
 Movie Inception
 Ser Breaking Bad
 Food Pancakes
 Season Summer
 Country Canada
+```
+```
 Esc
 :wq
 ```
@@ -257,12 +279,16 @@ _40. Создать файл sklls.txt добавить информацию о 
 ```
 touch sklls.txt
 vim sklls.txt
+```
+```
 Skill1 Terminal
 Skill2 Git
 Skill3 js
 Skill4 Postman
 Skill5 SQL
 Skill6 Dev Tools
+```
+```
 Esc
 :wq
 ```
