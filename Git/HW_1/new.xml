@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<person>
+	<Name>Artem</Name>
+	<Age>24</Age>
+	<Pets>1</Pets>
+	<Salary>1000</Salary>
+</person>
