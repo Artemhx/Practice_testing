@@ -21,14 +21,18 @@ git push -u origin main
 _5. Отредактировать содержание файла “new.json” - написать информацию о себе
 (ФИО, возраст, количество домашних животных, будущая желаемая зарплата).
 Всё написать в формате JSON._
-```json
+```
 vim new.json
+```
+```json
 {
   "Name": "Artem",
   "Age" : 24,
   "Pets": 1,
   "Salary": 1000 
 }
+```
+```
 Esc
 :wq
 ```
@@ -46,8 +50,10 @@ touch preferences.json
 _8. В файл preferences.json добавить информацию о своих предпочтениях
 (Любимый фильм, любимый сериал, любимая еда, любимое время года, сторона которую хотели бы посетить)
 в формате JSON._
-```Json
+```
 vim preferences.json
+```
+```json
 {
   "Movie": "Inception",
   "Ser": "Breaking Bad",
@@ -55,13 +61,17 @@ vim preferences.json
   "Season": "Summer",
   "Country": "Canada"    
 }
+```
+```
 Esc
 :wq
 ```
 _9. Создать файл sklls.json добавить информацию о скиллах которые будут изучены на курсе в формате JSON_
-```json
+```
 touch sklls.json
 vim sklls.json
+```
+```json
 {
   "Skill1": "Terminal",
   "Skill2": "Git",
@@ -70,6 +80,8 @@ vim sklls.json
   "Skill5": "SQL",
   "Skill6": "Dev Tools"
 }
+```
+```
 Esc
 :wq
 ```
