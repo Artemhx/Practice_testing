@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bugreport>
+  <id>1</id>
+  <Title>Application crashes upon clicking the SAVE button while creating a new user on USERS menu page</Title>
+  <Description>Application crashes upon clicking the SAVE button while creating a new the user, hence unable to create a new user in the application</Description>
+  <Severity>Medium</Severity>
+  <Priority>High</Priority>
+  <Steps>
+    <1>Login into the Application</1>
+    <2>Navigate to the Users Menu</2>
+    <3>Filled out all the user information fields</3>
+    <4>Clicked on the ‘Save’ button</4>
+    <5>Seen an error page ORA1090 Exception: Insert values Error</5>
+  </Steps>
+  <Environment>OC Windows 10, Google Chrome 100.0.4951</Environment>
+  <Status>Open</Status>
+  <Expected_Result>On clicking the SAVE button, you should be prompted to a successful message New User has been created successfully</Expected_Result>
+  <Actual_result>Application crashes</Actual_result>
+</bugreport>
