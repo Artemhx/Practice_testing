@@ -29,7 +29,7 @@ vim Bug_report_structure.txt
 ```
  Id | Title | Description | Environment | Steps to reproduce | Expected result | Actual result | Severity | Priority | Attachments
 :---|:------|:------------|:------------|:-------------------|:----------------|:--------------|:---------|:---------| :--------                            
-  *  |       |             |             |                    |                 |               |          |          |
+
 
 _4. Запушить структуру багрепорта на внешний репозиторий_
 ```
@@ -54,7 +54,7 @@ vim CheckList_structure.txt
 ```
  Id | Title | Input data | Expected result | Status | Details
 :---|:------|:-----------|:----------------|:-------|--------
-*   |       |            |                 |        |
+
 
 
 _8. Запушить структуру на внешний репозиторий_
