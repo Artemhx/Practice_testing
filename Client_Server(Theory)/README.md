@@ -1,4 +1,4 @@
-### Client_Server HW
+### Client_Server questions HW
 
 #### 1) Клиент-серверная архитектура
 #### 2) Что ткое HTTP и HTTPS?
