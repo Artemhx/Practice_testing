@@ -59,7 +59,7 @@ item_6 = 15
 item_6_type = typeof(item_6)
 
 //21. Вывести в консоль тип данных item_6 в виде ——  “item_6 == ”  item_6,  “item_6_type == ”  item_6_type ——
-console.log("item_6 == ",typeof(item_6) + ", item_6_type == ", typeof(item_6_type))
+console.log("item_6 == "+ item_6 + ", item_6_type == " + item_6_type)
 
 //22. Создать переменную item_7 и в ней преобразовать item_6 в String.
 let item_7 = String(item_6)
@@ -71,7 +71,7 @@ let item_7_type
 item_7_type = typeof(item_7)
 
 //25. Вывести в консоль тип данных item_7 в виде ——  “item_7 == ”  item_7,  “item_7_type == ”  item_7_type ——
-console.log("item_7 == ",typeof(item_7) + ", item_7_type == ", typeof(item_7_type))
+console.log("item_7 == " + item_7 + ", item_7_type == " + item_7_type)
 
 //26. Создать переменную “age_1” и присвоить ей значение 10
 let age_1 = 10
@@ -155,12 +155,19 @@ checkAge_2(dfgjkliw)
 
 const checkAge_3=function(age)
 {
-    if(age == '2') {
+    if(age != true && age != false){
         age = Number(age)
+    }
+    if(age == "1" || age == "0")
+    {
+        age = Number(age);
     }
     if(typeof(age) != 'number') {
         console.log("Ошибка! Неправильный тип данных")
-    }else {
+    }
+    else if(isNaN(age)){
+        console.log("Ошибка! Неправильный тип данных")
+    } else{
         if(age < age_2) {
             console.log("You don't have access cause your age is " + age + ". It's less then ")
         } else if(age >= age_2 && age < age_3) {
@@ -168,10 +175,13 @@ const checkAge_3=function(age)
         } else if(age > age_3) {
             console.log("Keep calm and look Culture channel")
         } else console.log("Technical work")
-    } 
+    }
+    
+
 }
 
-checkAge_3('2')
+checkAge_3("2")
+
 
 /*4 ***:
 Преобразовать задание 3* таким образом, чтобы возраст вводится используя функцию prompt в привязанной верстке
@@ -180,12 +190,19 @@ checkAge_3('2')
 
 const checkAge_4=function(age)
 {
-    if(age == '2') {
+    if(age != true && age != false){
         age = Number(age)
     }
-    if(typeof(age) != 'number') {
+    if(age == "1" || age == "0")
+    {
+        age = Number(age);
+    }
+    if(typeof(age) != 'number' ) {
         console.log("Ошибка! Неправильный тип данных")
-    }else {
+    }
+    else if(isNaN(age)){
+        console.log("Ошибка! Неправильный тип данных")
+    } else{
         if(age < age_2) {
             console.log("You don't have access cause your age is " + age + ". It's less then ")
         } else if(age >= age_2 && age < age_3) {
@@ -197,5 +214,4 @@ const checkAge_4=function(age)
 }
 
 let input = prompt('Введите возраст')
-let years = Number(input) 
-checkAge_4(years)
+checkAge_4(input)
