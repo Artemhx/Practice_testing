@@ -55,4 +55,4 @@ _Преобразовать 2* таким образом, чтобы значе�
 _Преобразовать задание 3* таким образом, чтобы возраст вводился используя функцию prompt в привязанной верстке_
 
 ***
->[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/js.HW_1/Artemhx_JS.HW_1.js)
+>[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_1/HW_1.js)
