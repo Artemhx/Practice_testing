@@ -180,7 +180,7 @@ const checkAge_3=function(age)
 
 }
 
-checkAge_3("2")
+checkAge_3(true)
 
 
 /*4 ***:
