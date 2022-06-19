@@ -155,19 +155,7 @@ checkAge_2(dfgjkliw)
 
 const checkAge_3=function(age)
 {
-    if(age != true && age != false){
-        age = Number(age)
-    }
-    if(age == "1" || age == "0")
-    {
-        age = Number(age);
-    }
-    if(typeof(age) != 'number') {
-        console.log("Ошибка! Неправильный тип данных")
-    }
-    else if(isNaN(age)){
-        console.log("Ошибка! Неправильный тип данных")
-    } else{
+    if(age && !isNaN(age)){
         if(age < age_2) {
             console.log("You don't have access cause your age is " + age + ". It's less then ")
         } else if(age >= age_2 && age < age_3) {
@@ -176,11 +164,11 @@ const checkAge_3=function(age)
             console.log("Keep calm and look Culture channel")
         } else console.log("Technical work")
     }
+
+ }
     
 
-}
-
-checkAge_3(true)
+checkAge_3('2')
 
 
 /*4 ***:
@@ -190,19 +178,7 @@ checkAge_3(true)
 
 const checkAge_4=function(age)
 {
-    if(age != true && age != false){
-        age = Number(age)
-    }
-    if(age == "1" || age == "0")
-    {
-        age = Number(age);
-    }
-    if(typeof(age) != 'number' ) {
-        console.log("Ошибка! Неправильный тип данных")
-    }
-    else if(isNaN(age)){
-        console.log("Ошибка! Неправильный тип данных")
-    } else{
+    if(age && !isNaN(age)){
         if(age < age_2) {
             console.log("You don't have access cause your age is " + age + ". It's less then ")
         } else if(age >= age_2 && age < age_3) {
@@ -210,7 +186,8 @@ const checkAge_4=function(age)
         } else if(age > age_3) {
             console.log("Keep calm and look Culture channel")
         } else console.log("Technical work")
-    } 
+    }
+   
 }
 
 let input = prompt('Введите возраст')
