@@ -1,3 +1,5 @@
+// Task 1.
+// Написать функцию, которая найдет и выведет в консоль юзеров, зарегистрированных 09.10.2021 и 10.10.2021
 const users = [
     {
         firstName: 'John',
@@ -79,6 +81,7 @@ const users = [
     },
 ];
 
+// Функция
 const userOut = function()
 {
     const someUsers = users.filter(person => person.registrationDate == '09.10.2021' || person.registrationDate == '10.10.2021')
