@@ -8,21 +8,21 @@
  let rawdata = fs.readFileSync('task2.json'); 
  let items = JSON.parse(rawdata); 
 
- // Функция 
+// Функция 
 const uniqueItemsFunc = function()
 {
-    // передаем в массив itemsName значения name из массива items
-    let itemsName = items.map(person => {
-        return person.name;
+    // передаем в массив itemsEmail значения email из массива items
+    let itemsEmail = items.map(person => {
+        return person.email;
     })
-    // передаем в массив uniqueNames только уникальные значения name из массива itemsName
-    let uniqueNames = Array.from(new Set(itemsName))
+    // передаем в массив emails только уникальные значения email из массива itemsName
+    let emails = Array.from(new Set(itemsEmail))
 
     // передаем в массив uniqueItems только уникальные элементы массива items
     let uniqueItems = []
-    for(let i=0;i<uniqueNames.length;i++){
+    for(let i=0;i<emails.length;i++){
         for(let j=0;j<items.length;j++){
-            if(uniqueNames[i] == items[j].name)
+            if(emails[i] == items[j].email)
             {
                 uniqueItems.push(items[j])
                 break;
@@ -31,9 +31,10 @@ const uniqueItemsFunc = function()
     }
     //Изменяем наш первоначальный массив(items), чтобы он хранил только уникальные значения
     items = uniqueItems
-    console.log("Уникальные значения массива items: ")
-    items.forEach(item => {
-        console.log(item)
-    });
+
 }
 uniqueItemsFunc()
+console.log("Уникальные значения массива items: ")
+items.forEach(item => {
+    console.log(item)
+});
