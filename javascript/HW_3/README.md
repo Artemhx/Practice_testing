@@ -7,11 +7,11 @@ _Дан массив объектов. Каждый объект являетс�
 >[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%202.js)
 ***
 **Task 2***
-_Реализуйте считывание из JSONки из файла task2.json с помощью, например, модуля fs. для дальнейшего использования в функции, описанной в задании Task 2_
+_Реализуйте считывание из JSONки из файла [task2.json](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/task2.json) с помощью, например, модуля fs. для дальнейшего использования в функции, описанной в задании Task 2_
 >[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%202.1.js)
 ***
 **Task 3**
-_В файле [task3.txt](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/Task%203.txt) найдете структуру компании и задания, необходимые выполнить._
+_В файле [task3.txt](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/Task%203.txt) найдете структуру компании и задания,которые необходимые выполнить._
 >[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%203.js)
 
 ***
