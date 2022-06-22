@@ -2,7 +2,7 @@
 // Нам нужно хранить только уникальные значения в этом массиве. Реализуйте функцию,
 // которая будет выполнять эту работу.
 
-let items = [
+const items = [
     {
     "name": "Leanne Graham",
     "username": "Bret",
@@ -367,7 +367,7 @@ const uniqueItemsFunc = function()
     // передаем в массив emails только уникальные значения email из массива itemsName
     let emails = Array.from(new Set(itemsEmail))
 
-    // передаем в массив uniqueItems только уникальные элементы массива items
+    // передаем в массив uniqueItems только уникальные элементы массива items, с неповторяющимся email
     let uniqueItems = []
     for(let i=0;i<emails.length;i++){
         for(let j=0;j<items.length;j++){
@@ -379,8 +379,13 @@ const uniqueItemsFunc = function()
         }
     }
     //Изменяем наш первоначальный массив(items), чтобы он хранил только уникальные значения
-    items = uniqueItems
-
+    // обнуляем массив items
+    items.splice(0,items.length)
+    // и заполняем его только уникальными значениями, из массива uniqueItems
+    for(let i =0;i<uniqueItems.length;i++)
+    {
+        items.push(uniqueItems[i])
+    }
 }
 uniqueItemsFunc()
 console.log("Уникальные значения массива items: ")
