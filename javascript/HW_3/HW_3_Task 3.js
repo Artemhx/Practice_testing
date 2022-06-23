@@ -71,6 +71,7 @@ const enterprises = [
 
 for(let i=0;i<enterprises.length;i++)
 {
+    //переменная для подсчёта кол-ва сотрудников
     let empNum = 0
     for(let j=0;j<enterprises[i].departments.length;j++)
     {
