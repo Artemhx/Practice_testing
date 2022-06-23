@@ -1,5 +1,5 @@
 **Task 1**
-_Написать функцию, которая найдет и выведет в консоль юзеров, зарегистрированных 09.10.2021 и 10.10.2021)_
+_Написать функцию, которая найдет и выведет в консоль юзеров, зарегистрированных 09.10.2021 и 10.10.2021). Массив в task1.txt_
 >[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%201.js)
 ***
 **Task 2**
@@ -15,3 +15,11 @@ _В файле [task3.txt](https://github.com/Artemhx/Practice_testing/blob/main
 >[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%203.js)
 
 ***
+**Task 4**
+_В файле [task4.txt](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/Task%204.txt) находится разноуровневый массив объектов. Очень похожий на массив из 3го задания, только количество вложенностей может быть не ограничено._
+
+_Задание: написать функцию: 
+Функция строит древовидный список компании.
+При её вызове, в консоль должен вывестись список подразделений компании, с указанием количества сотрудников и с соблюдением вложенности подразделений_
+
+>[link](https://github.com/Artemhx/Practice_testing/blob/main/javascript/HW_3/HW_3_Task%204.js)
