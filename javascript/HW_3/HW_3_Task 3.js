@@ -269,7 +269,7 @@ const deleteEnterprise = function(enterpriseId)
   }
 }
 
-deleteEnterprise(4)
+deleteEnterprise(1)
 
 // Для проверки -> Выведет в консоль названия оставшихся предприятий и их id
 // for(let i=0;i<enterprises.length;i++)
@@ -300,7 +300,7 @@ const deleteDepartment = function(departmentId)
   }
 }
 
-deleteDepartment(1)
+deleteDepartment(10)
 
 //Для проверки -> Выведет в консоль названия всех отделов и их id, кроме удалённых
 // for(let i=0;i<enterprises.length;i++)
