@@ -95,26 +95,15 @@ const company = [
   ---- HR (1)
   */
 
-function getCompany(companyName) {
-  let line = "";
-  let line2 = "-- ";
-  let line4 = "---- ";
-  let line6 = "------ ";
-  companyName.forEach(item => {
-    if(item.parent == 1){
-      console.log(line2 + item.name + " (" + item.users_count +")")
-    }else if(item.parent == 2 || item.parent == 5){
-      console.log(line4 + item.name + " (" + item.users_count +")")
-    }else if(item.parent == 7)
-    {
-      console.log(line6 + item.name + " (" + item.users_count +")")
-    }else console.log(line + item.name + " (" + item.users_count +")")
-  
-    if(item.children){
-      getCompany(item.children)
+const getCompany = function(company, counter = ''){
+  company.forEach(el => {
+    console.log(`${counter}${counter === "" ? "" : " "}${el.name} (${el.users_count})`)
+    if(el.children){
+      counter += "--"
+      getCompany(el.children, counter)
+      counter = counter.slice(0,-2)
     }
   });
 }
 
 getCompany(company)
-
