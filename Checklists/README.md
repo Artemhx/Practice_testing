@@ -1,0 +1,2 @@
+* [Smoke Checklist (Currency)](https://docs.google.com/spreadsheets/d/1UQ1432kqOREcnix_Q3NkRYNjRBhYbSjE3XDEoPDld1A/edit#gid=0)
+* [Critical path Checklist (Currency)](https://docs.google.com/spreadsheets/d/18RSeHwrJqDu7eBNMN7esQ_-1e8TQFzz7mFyM8zpHO0c/edit#gid=0)
