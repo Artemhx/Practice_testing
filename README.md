@@ -7,3 +7,7 @@ __Задания с курса по Тестированию ПО__
 * [Client_Server(Theory)](https://github.com/Artemhx/Practice_testing/tree/main/Client_Server(Theory))
 * [Postman](https://github.com/Artemhx/Practice_testing/tree/main/Postman)
 * [Javascript](https://github.com/Artemhx/Practice_testing/tree/main/javascript)
+
+***
+
+* [Mindmap](https://github.com/Artemhx/Practice_testing/tree/main/Mindmap)
