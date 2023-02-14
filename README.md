@@ -11,3 +11,4 @@ __Задания с курса по Тестированию ПО__
 ***
 
 * [Mindmap](https://github.com/Artemhx/Practice_testing/tree/main/Mindmap)
+* [Test-cases](https://github.com/Artemhx/Practice_testing/blob/main/Test-cases/Test-cases.pdf)
