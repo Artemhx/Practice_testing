@@ -1,0 +1,8 @@
+{
+  "name": "test-task",
+  "private": true,
+  "version": "1.0.0",
+  "description": "тестовое задание тестировщика",
+  "license": "MIT",
+  "repository": "https://bitbucket.org/pavellob/test-task"
+}

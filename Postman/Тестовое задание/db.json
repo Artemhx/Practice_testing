@@ -1,0 +1,74 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "MCummings",
+            "email": "MSpencer@fringilla.ly",
+            "password": "8tsNhWDf",
+            "company": "Steward Computing"
+        },
+        {
+            "id": 2,
+            "username": "VSchacher",
+            "email": "YMiljour@odio.gov",
+            "password": "AGynCpF0",
+            "company": "Ahern Computing"
+        },
+        {
+            "id": 3,
+            "username": "NBarazi",
+            "email": "ALake@scelerisque.io",
+            "password": "aLrVBl7Y",
+            "company": "Coffell Global"
+        },
+        {
+            "id": 4,
+            "username": "KLarson",
+            "email": "LCook@tortor.gov",
+            "password": "BIa8x3kf",
+            "company": "Swayngim Corporation"
+        },
+        {
+            "id": 5,
+            "username": "ACoggins",
+            "email": "NLawson@quis.net",
+            "password": "9U1R1AFQ",
+            "company": "Mendiola Brothers"
+        },
+        {
+            "id": 6,
+            "username": "VRoazen",
+            "email": "SHambrick@aliquam.net",
+            "password": "dxBfbf94",
+            "company": "Douglas LLC"
+        },
+        {
+            "id": 7,
+            "username": "EBuikema",
+            "email": "DKoprowski@turpis.net",
+            "password": "X4LQjYFu",
+            "company": "Hadley Technologies"
+        },
+        {
+            "id": 8,
+            "username": "MOrellana",
+            "email": "BSpellicy@molestie.gov",
+            "password": "lHYzPYnw",
+            "company": "Merritt Brothers"
+        },
+        {
+            "id": 9,
+            "username": "FDodd",
+            "email": "GKentro@amet.io",
+            "password": "z410FdAS",
+            "company": "Neilson Shipping"
+        },
+        {
+            "id": 10,
+            "username": "NEmerson",
+            "email": "ROrmond@aliquam.net",
+            "password": "2GIK7KTY",
+            "company": "Solomon Technologies"
+        }
+    ]
+}

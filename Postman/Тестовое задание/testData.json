@@ -1,0 +1,786 @@
+{
+	"info": {
+		"_postman_id": "66ffc893-7c1b-4b84-9271-ddd35d19bd3d",
+		"name": "тестовое задание",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15148531"
+	},
+	"item": [
+		{
+			"name": "Получение всех пользователей",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 200 статус кода\r",
+							"pm.test(\"Запрос успешно выполнен 200 статус код\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Наличие тела ответа\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody);\r",
+							"pm.test(\"Правильные свойства у объектов в теле ответа\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"id\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"username\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"email\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"password\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"company\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие данных в обязательных полях\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        // проверяем что в обязательных полях не пустые значения\r",
+							"        pm.expect(JSON.stringify(responseData[el].id)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].username)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].email)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].password)).to.not.be.empty;\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильность типов данных в полях\", function () {\r",
+							"    for(let el in responseData){\r",
+							"    pm.expect(responseData[el].id).to.be.a(\"number\");\r",
+							"    pm.expect(responseData[el].username).to.be.a(\"string\");\r",
+							"    pm.expect(responseData[el].email).to.be.an(\"string\");\r",
+							"    pm.expect(responseData[el].password).to.be.an(\"string\");\r",
+							"    pm.expect(responseData[el].company).to.be.an(\"string\");\r",
+							"\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле username не превышает 512 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].username.length).to.be.below(513);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле password имеет как минимум 6 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].password.length).to.be.greaterThan(5);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле company не превышает 512 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].company.length).to.be.below(513);\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение пользователя по id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 200 статус кода\r",
+							"pm.test(\"Запрос успешно выполнен 200 статус код\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Наличие тела ответа\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody);\r",
+							"\r",
+							"// переменная из окружения коллекции\r",
+							"let id = pm.collectionVariables.get(\"id\");\r",
+							"pm.test(\"В теле ответа приходит верный id пользователя\", function () {\r",
+							"    pm.expect(JSON.stringify(responseData.id)).to.eql(id);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Правильные свойства у объектов в теле ответа\", function () {\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"id\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"username\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"email\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"password\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"company\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие данных в обязательных полях\", function () {\r",
+							"    // проверяем что в обязательных полях не пустые значения\r",
+							"    pm.expect(JSON.stringify(responseData.id)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.username)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.email)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.password)).to.not.be.empty;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильность типов данных в полях\", function () {\r",
+							"    pm.expect(responseData.id).to.be.a(\"number\");\r",
+							"    pm.expect(responseData.username).to.be.a(\"string\");\r",
+							"    pm.expect(responseData.email).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.password).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.company).to.be.an(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле username не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.username.length).to.be.below(513);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле password имеет как минимум 6 символов\", function () {\r",
+							"        pm.expect(responseData.password.length).to.be.greaterThan(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле company не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.company.length).to.be.below(513);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение пользователя по нессуществующему id(Негативный сценарий)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 404 статус кода\r",
+							"pm.test(\"Ресурс не найден 404 статус код\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody);\r",
+							"pm.test(\"В теле ответа пустые {}\", function() {\r",
+							"pm.expect(JSON.stringify(responseData)).to.eql(\"{}\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users/{{wrongid}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"{{wrongid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение пользователя по параметру",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Запрос успешно выполнен 200 статус код\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Наличие тела ответа\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody); \r",
+							"pm.test(\"Параметры в url совпадают со свойством и его значением в теле ответа\", function() {\r",
+							"    let email = pm.collectionVariables.get(\"email\");\r",
+							"    let emailValue = pm.collectionVariables.get(\"emailValue\");\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(email);\r",
+							"        pm.expect(JSON.stringify(responseData[el].email)).to.eql(JSON.stringify(emailValue)); \r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильные свойства у объектов в теле ответа\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"id\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"username\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"email\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"password\");\r",
+							"        pm.expect(JSON.stringify(responseData[el])).to.include(\"company\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие данных в обязательных полях\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        // проверяем что в обязательных полях не пустые значения\r",
+							"        pm.expect(JSON.stringify(responseData[el].id)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].username)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].email)).to.not.be.empty;\r",
+							"        pm.expect(JSON.stringify(responseData[el].password)).to.not.be.empty;\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильность типов данных в полях\", function () {\r",
+							"    for(let el in responseData){\r",
+							"    pm.expect(responseData[el].id).to.be.a(\"number\");\r",
+							"    pm.expect(responseData[el].username).to.be.a(\"string\");\r",
+							"    pm.expect(responseData[el].email).to.be.an(\"string\");\r",
+							"    pm.expect(responseData[el].password).to.be.an(\"string\");\r",
+							"    pm.expect(responseData[el].company).to.be.an(\"string\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле username не превышает 512 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].username.length).to.be.below(513);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле password имеет как минимум 6 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].password.length).to.be.greaterThan(5);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле company не превышает 512 символов\", function () {\r",
+							"    for(let el in responseData){\r",
+							"        pm.expect(responseData[el].company.length).to.be.below(513);\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users?{{email}}={{emailValue}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "{{email}}",
+							"value": "{{emailValue}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение пользователя по параметру(Негативный сценарий)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Ресурс не найден 404 статус код\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.variables.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users?gfgfdg=dsadafa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "gfgfdg",
+							"value": "dsadafa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 201 статус кода\r",
+							"pm.test(\"Ресурс успешно создан 201 статус код\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие тела ответа\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Правильные свойства у объектов в теле ответа\", function () {\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"id\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"username\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"email\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"password\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"company\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие данных в обязательных полях\", function () {\r",
+							"    // проверяем что в обязательных полях не пустые значения\r",
+							"    pm.expect(JSON.stringify(responseData.id)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.username)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.email)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.password)).to.not.be.empty;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильность типов данных в полях\", function () {\r",
+							"    pm.expect(responseData.id).to.be.a(\"number\");\r",
+							"    pm.expect(responseData.username).to.be.a(\"string\");\r",
+							"    pm.expect(responseData.email).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.password).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.company).to.be.an(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле username не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.username.length).to.be.below(513);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле password имеет как минимум 6 символов\", function () {\r",
+							"        pm.expect(responseData.password.length).to.be.greaterThan(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле company не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.company.length).to.be.below(513);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 20,\r\n        \"username\": \"Artem\",\r\n        \"email\": \"xloptsevtest@gmail.com\",\r\n        \"password\": \"abc123\",\r\n        \"company\": \"Test\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя с существующим id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Создание отклонено, такой id уже есть в системе 500 статус код\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"username\": \"MCummings\",\r\n        \"email\": \"MSpencer@fringilla.ly\",\r\n        \"password\": \"8tsNhWDf\",\r\n        \"company\": \"Steward Computing\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя(Негативный сценарий)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 201 статус кода\r",
+							"pm.test(\"Ресурс не может быть создан из за неверного тела запроса\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": \r\n\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Пользователь успешно удалён, статус код 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление пользователя(Негативный сценарий)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Пользователь с таким id не найден, 404 статус код \", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/users/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 201 статус кода\r",
+							"pm.test(\"Ресурс успешно отредактирован 204 статус код\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие тела ответа\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"//Спарсить response body в json.\r",
+							"let responseData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Правильные свойства у объектов в теле ответа\", function () {\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"id\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"username\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"email\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"password\");\r",
+							"    pm.expect(JSON.stringify(responseData)).to.include(\"company\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Наличие данных в обязательных полях\", function () {\r",
+							"    // проверяем что в обязательных полях не пустые значения\r",
+							"    pm.expect(JSON.stringify(responseData.id)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.username)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.email)).to.not.be.empty;\r",
+							"    pm.expect(JSON.stringify(responseData.password)).to.not.be.empty;\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Правильность типов данных в полях\", function () {\r",
+							"    pm.expect(responseData.id).to.be.a(\"number\");\r",
+							"    pm.expect(responseData.username).to.be.a(\"string\");\r",
+							"    pm.expect(responseData.email).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.password).to.be.an(\"string\");\r",
+							"    pm.expect(responseData.company).to.be.an(\"string\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле username не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.username.length).to.be.below(513);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле password имеет как минимум 6 символов\", function () {\r",
+							"        pm.expect(responseData.password.length).to.be.greaterThan(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Значение в поле company не превышает 512 символов\", function () {\r",
+							"        pm.expect(responseData.company.length).to.be.below(513);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"username\": \"Artemx\",\r\n    \"email\": \"xloptsevtest@gmail.com\",\r\n    \"password\": \"abc123\",\r\n    \"company\": \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование пользователя(Негативный сценарий)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Проверка 404 статус кода\r",
+							"pm.test(\"Ресурс не найден 404 статус код\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"username\": \"Artemx\",\r\n    \"email\": \"xloptsevtest@gmail.com\",\r\n    \"password\": \"abc123\",\r\n    \"company\": \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/users/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"users",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "wrongid",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "email",
+			"type": "string"
+		},
+		{
+			"key": "emailValue",
+			"value": "NLawson@quis.net",
+			"type": "string"
+		}
+	]
+}
